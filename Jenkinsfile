@@ -14,7 +14,8 @@ pipeline {
         stage('Deploy to Render') {
             steps {
                 script {
-                    sh 'node server'
+                    sh 'fuser -k 5000/tcp || true'
+                    sh 'node server &'
                 }
             }
         }
